@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>:0</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+.resize-handle {
+    width: 20px;
+    height: 20px;
+    background-image: url('./images/download.png'); /* Replace 'path/to/your/image.png' with your image file path */
+    background-size: contain; /* Adjust this according to your image size */
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    cursor: se-resize;
+    /* Other properties */
+}
+
+
+iframe {
+    display: block;
+    border: none; 
+}
+
+.resize-handle {
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+}
+        .draggable {
+            position: absolute;
+            width: 60%;
+            height: 500px;
+            border: 1px solid #333;
+            background-color: white;
+        }
+        .draggable-header {
+            padding: 5px;
+            background-color: #333;
+            color: white;
+            cursor: move;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+        }
+        .delete-button {
+            float: right;
+            cursor: pointer;
+            color: white;
+        }
+        .resize-handle {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            cursor: se-resize;
+        }
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .draggable {
+        position: absolute;
+        width: 60%;
+        height: 500px;
+        border: 2px solid #555;
+        background-color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .draggable-header {
+        padding: 10px 15px;
+        background-color: #333;
+        color: white;
+        cursor: move;
+        font-size: 16px;
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+    }
+
+    iframe {
+        width: 100%;
+        height: calc(100% - 40px); 
+    }
+
+    .delete-button {
+        float: right;
+        cursor: pointer;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    .resize-handle {
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        cursor: se-resize;
+        border-bottom-right-radius: 6px;
+    }
+
+    button {
+        padding: 10px 20px;
+        margin: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    background-image: url('./images/gp2.png'); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    margin: 0;
+    padding: 20px;
+}
+
+    </style>
+</head>
+<body>
+
+<button id="button" onclick="createIframe('./hurr.html')">Load Proxy</button>
+<button id="button2" onclick="createIframe('./games.html')">Games</button>
+<button id="button3" onclick="processURL()">Iframer</button>
+<script>
+
+    $(function() {
+        var highestZIndex = 1000; 
+        function processURL() {
+        let userURL = prompt("Enter the website URL:");
+        
+        if (!userURL.startsWith('https://')) {
+            userURL = 'https://' + userURL;
+        }
+        
+        createIframe(userURL);
+    }    
+        function createIframe(src) {
+            const iframeContainer = $('<div class="draggable"></div>');
+            const header = $('<div class="draggable-header">-</div>');
+            const closeButton = $('<span class="delete-button">X</span>');
+            const iframe = $('<iframe></iframe>').attr("src", src);
+            const resizeHandle = $('<div class="resize-handle"></div>');
+            closeButton.on('click', function() {
+                $(this).closest('.draggable').remove();
+            });
+            header.append(closeButton);
+            iframeContainer.append(header, iframe, resizeHandle)
+                           .appendTo('body')
+                           .draggable({
+                                handle: ".draggable-header",
+                                start: function() {
+                                    highestZIndex++; // Increment the z-index
+                                    $(this).css('z-index', highestZIndex); // Apply new z-index
+                                }
+                            })
+                           .resizable({
+                                handles: {
+                                    'se': resizeHandle
+                                }
+                            });
+            iframeContainer.css('z-index', highestZIndex); // Set initial z-index
+        }
+        $("#button3").click(function() {
+            processURL();
+        })
+        $("#button").click(function() {
+            let proxyItem = localStorage.getItem('proxy');
+    let iframeUrl;
+
+    if (proxyItem === 'astroid') {
+        createIframe('https://astroid.mathonline.click/worksheets/');
+    } else if (proxyItem === 'interstellar') {
+        createIframe('https://igobylotsofnames.mathonline.click');
+}else if (proxyItem === 'hypertabs'){
+    createIframe('https://math.math.mathonline.click')
+} else {
+    createIframe('./hurr.html');
+    }
+        });
+        $("#button2").click(function() {
+            createIframe('./games.html');
+        });
+    });
+    </script>
+</body>
+</html>

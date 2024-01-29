@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Settings</title>
+  <style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #4caf50;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #4caf50;
+}
+
+select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+select:focus {
+  outline: none;
+  border-color: #4caf50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Settings</h1>
+  <label for="background">Funni Cursor Effects</label>
+  <select id="background" onchange="saveSettings()">
+    <option value="true">Yes</option>
+    <option value="false">Hell no</option>
+  </select>
+  <br>
+  <label for="explosions">Particle Die Fast</label>
+  <select id="explosions" onchange="saveSettings()">
+    <option value="false">No</option>
+  <option value="true">Yes</option>
+</select>
+<br>
+<label for="style">Proxy Styles</label>
+<select id="style" onchange="saveSettings()">
+<option value="mainStyle">Default</option>
+<option value="darkStyle">Dark Mode</option>
+<option value="frozenStyle">Frozen</option>
+</select>
+<!--  <br>
+  <label for="gamestyle">Game Select Style</label>
+  <select id="gamestyle" onchange="saveSettings()">
+  <option value="mainStyle">Default</option>
+  <option value="frozenStyle">Frozen</option>
+  </select>!-->
+  <br>
+  <label for="proxy">Proxy</label>
+  <select id="proxy" onchange="saveSettings()">
+    <option value="interstellar">Interstellar</option>
+    <option value="astroid">Astroid</option>
+    <option value="hypertabs">Hypertabs</option>
+</select>
+<br>
+<label for="quoteType">Quotes</label>
+<select id="quoteType" onchange="saveSettings()">
+  <option value="day">Daily</option>
+  <option value="hour">Hourly</option>
+  <option value="minute">Minutely</option>
+  </select>
+  <br>
+<label for="panic">Panic Button</label>
+<select id="panic" onchange="saveSettings()">
+  <option value="on">Yea</option>
+  <option value="off">Nah</option>
+</select>
+<label for="panicURL">Panic URL</label>
+<input type="text" id="panicURL" onchange="saveSettings()">
+</div>
+
+<script>
+  // Function to save settings to localStorage
+  function saveSettings() {
+    const background = document.getElementById("background").value;
+    const proxy = document.getElementById("proxy").value
+    const panic = document.getElementById("panic").value;
+    const panicURL = document.getElementById("panicURL").value;
+    const explosions = document.getElementById("explosions").value;
+    const quoteType = document.getElementById("quoteType").value;
+    const style = document.getElementById("style").value;
+ //  const gameStyle = document.getElementById("gamestyle").value;
+    
+ //   localStorage.setItem("gamestyle", gameStyle)
+    localStorage.setItem("style", style)
+    localStorage.setItem("quoteType", quoteType)
+    localStorage.setItem("explosions", explosions)
+    localStorage.setItem("panicURL", panicURL);
+    localStorage.setItem("panic", panic);
+    localStorage.setItem("proxy", proxy);
+    localStorage.setItem("draw", background);
+  }
+
+  window.onload = function() {
+ //   const gameStyle = document.getElementById("gamestyle").value;
+    const quoteType = localStorage.getItem("quoteType");
+    const Explosions = localStorage.getItem("explosions");
+    const savedType = localStorage.getItem("userType");
+    const savedBackground = localStorage.getItem("draw");
+    const savedProxy = localStorage.getItem("proxy");
+    const Panic = localStorage.getItem("panic")
+    const PanicURL = localStorage.getItem("panicURL")
+    const style = localStorage.getItem("style")
+
+    if (style) {
+      document.getElementById("style").value = style;
+    }
+    if (quoteType) {
+      document.getElementById("quoteType").value = quoteType;
+    }
+    if (savedBackground) {
+      document.getElementById("background").value = savedBackground;
+    }
+    if (savedProxy) {
+      document.getElementById("proxy").value = savedProxy;
+    }
+    if (Panic) {
+      document.getElementById("panic").value = Panic;
+    }
+    if (PanicURL) {
+      document.getElementById("panicURL").value = PanicURL;
+    }
+    if (Explosions) {
+      document.getElementById("explosions").value = Explosions;
+    }
+ //   if (gameStyle) {
+   //   document.getElementById("gamestyle").value = gameStyle
+    //}
+  };
+</script>
+
+</body>
+</html>

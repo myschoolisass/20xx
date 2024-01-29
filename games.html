@@ -1,0 +1,351 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+}
+h1 {
+    color:white
+}
+#searchBox {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+iframe {
+    border: none;
+}
+
+/* Button Styles */
+button.loadIframe,
+button.favorite-game,
+button.favorite-button,
+button.normal-game,
+button.remove-button {
+    transition: transform 0.2s ease-in-out;
+    padding: 10px 20px;
+    border: 2px solid #4CAF50;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #4CAF50;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button.loadIframe:hover,
+button.favorite-game:hover,
+button.favorite-button:hover,
+button.normal-game:hover,
+button.remove-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+button.favorite-button,
+button.remove-button {
+    background-color: #4CAF50;
+    color: #ffffff;
+    border-color: #4CAF50;
+}
+
+/* Specific Game Button Styles */
+.favorite-game,
+.normal-game {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+}
+
+.favorite-game:hover,
+.normal-game:hover {
+    background-color: #45a049;
+}
+
+.favorite-button {
+    margin-left: 10px;
+    background-color: #f44336;
+}
+
+.favorite-button:hover{
+    background-color: #d32f2f;
+}
+.remove-button {
+    background-color: #ff9800;
+}
+
+.remove-button:hover {
+    background-color: #f57c00;
+}
+.hidden {
+    display: none;
+}
+.category {
+        margin-bottom: 10px;
+    }
+
+    .category h1 {
+        cursor: pointer;
+        transition: color 0.3s ease-in-out; /* Smooth color transition */
+    }
+
+    .category-content {
+        max-height: 1000px; /* Set a maximum height for animation */
+        transition: max-height 0.5s ease-in-out; /* Smooth height transition */
+        overflow: hidden; /* Hide content beyond max-height */
+    }
+
+    .category-content.collapsed {
+        max-height: 0; /* Collapse content when collapsed class is added */
+        padding: 0 10px; /* Adjust padding to maintain spacing */
+    }
+    .category h1 {
+            cursor: pointer;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            margin-bottom: 5px;
+            position: relative;
+        }
+
+        .category .dropdown-btn {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .category.collapsed h1 {
+            background-color: #45a049; /* Updated background color when collapsed */
+        }
+
+        .category.collapsed .dropdown-btn {
+            transform: translateY(-50%) rotate(-180deg);
+        }
+</style>
+</head>
+<body>
+<input type="text" id="searchBox" placeholder="Search">
+<div class="category">
+    <h1 onclick="toggleCategory('favorites')">
+        Favourites            
+         <i class="fas fa-chevron-down dropdown-btn"></i> <!-- Font Awesome icon for dropdown -->
+    </h1>
+    <div id="favorites" class="category-content"></div>
+</div>
+<div class="category">
+    <h1 onclick="toggleCategory('Popular')">
+        Popular
+        <i class="fas fa-chevron-down dropdown-btn"></i> <!-- Font Awesome icon for dropdown -->
+    </h1>
+    <div id="Popular" class="category-content">
+<button class="loadIframe" data-url="https://geography.mathonline.click/-sg.html" data-name="Stumble Guys">Stumble Guys</button>
+<button class="loadIframe" data-url="https://myschoolisass.github.io/rb" data-name="Retro Bowl">Retro Bowl</button>
+<button class="loadIframe" data-url="https://myschoolisass.github.io/pk" data-name="Progress Knight">Progress Knight</button>
+<button class="loadIframe" data-url="https://myschoolisass.github.io/sb" data-name="SnowBattle">SnowBattle</button>
+<button class="loadIframe" data-url="https://myschoolisass.github.io/ss" data-name="Subway Surfers">Subway Surfers</button>
+<button class="loadIframe" data-url="https://myschoolisass.github.io/EC.html" data-name="Minecraft v1.5.2">Minecraft V1.5.2</button>
+<button class="loadIframe" data-url="https://myschoolisass.github.io/bl" data-name="Basketball Legends">Basketball Legends</button>
+<button class="loadIframe" data-url="https://myschoolisass.github.io/cr" data-name="Cluster Rush">Cluster Rush</button>
+<button class="loadIframe" data-url="https://myschoolisass.github.io/slp" data-name="Slope">Slope</button>
+<button class="loadIframe" data-url="https://myschoolisass.github.io/slp2" data-name="Slope 2">Slope 2</button>
+</div>
+</div>
+<div class="category">
+<h1 onclick="toggleCategory('Rogue-Like')">
+    Rogue-like
+    <i class="fas fa-chevron-down dropdown-btn"></i> <!-- Font Awesome icon for dropdown -->
+</h1>
+<div id="Rogue-Like" class="category-content">
+<button class="loadIframe" data-url="https://myschoolisass.github.io/ngn" data-name="Ngon New">Ngon New</button>
+<button class="loadIframe" data-url="https://myschoolisass.github.io/ngo" data-name="Ngon OG">Ngon OG</button>
+<button class="loadIframe" data-url="https://myschoolisass.github.io/tm/" data-name="Ten Minutes Till Dawn">Ten Minutes Till Dawn</button>
+</div>
+</div>
+<div class="category">
+<h1 onclick="toggleCategory('Idle')">
+    Idle
+    <i class="fas fa-chevron-down dropdown-btn"></i> <!-- Font Awesome icon for dropdown -->
+</h1>
+<div id="Idle" class="category-content">
+<button class="loadIframe" data-url="https://myschoolisass.github.io/ib" data-name="Idle Breakout">Idle Breakout</button>
+<button class="loadIframe" data-url="https://geography.mathonline.click/-l2fi.html" data-name="Learn To Fly Idle">Learn To Fly Idle</button>
+<button class="loadIframe" data-url="https://geography.mathonline.click/-cc.html" data-name="Cookie Clicker">Cookie Clicker</button>
+<button class="loadIframe" data-url="https://myschoolisass.github.io/iigd" data-name="Idle Idle Gamedev">Idle Idle Gamedev</button>
+<button class="loadIframe" data-url="https://myschoolisass.github.io/id" data-name="Idle Dice">Idle Dice</button>
+<button class="loadIframe" data-url="https://myschoolisass.github.io/ic" data-name="Idle Chopper">Idle Chopper</button>
+<button class="loadIframe" data-url="https://chess.mathonline.click-is.html" data-name="Idle Superpowers">Idle Superpowers</button>
+<button class="loadIframe" data-url="https://myschoolisass.github.io/sc" data-name="Space Company">Space Company</button>
+<button class="loadIframe" data-url="https://myschoolisass.github.io/pc" data-name="Particle Clicker">Particle Clicker</button>
+<button class="loadIframe" data-url="https://myschoolisass.github.io/is" data-name="Idle Shark">Idle Shark</button>
+<button class="loadIframe" data-url="https://myschoolisass.github.io/tfe2" data-name="The Final Earth 2">The Final Earth 2</button>
+<button class="loadIframe" data-url="https://fractions.mathonline.click/-ch.html" data-name="Clicker Heroes">Clicker Heroes</button>
+</div>
+</div>
+<div class="category">
+<h1 onclick="toggleCategory('Shooter')">
+    Shooter
+    <i class="fas fa-chevron-down dropdown-btn"></i> <!-- Font Awesome icon for dropdown -->
+</h1>
+<div id="Shooter" class="category-content">
+<button class="loadIframe" data-url="https://myschoolisass.github.io/1v1" data-name="1v1.lol">1v1.LOL</button>
+<button class="loadIframe" data-url="https://myschoolisass.github.io/fs" data-name="Funny Shooter">Funny Shooter</button>
+</div>
+</div>
+<div class="category">
+<h1 onclick="toggleCategory('Scratch')">
+    Scratch
+    <i class="fas fa-chevron-down dropdown-btn"></i> <!-- Font Awesome icon for dropdown -->
+</h1>
+<div id="Scratch" class="category-content">
+<button class="loadIframe" data-url="https://turbowarp.org/292728003/embed" data-name="Two Player Battle">Two Player Battle</button>
+<button class="loadIframe" data-url="https://turbowarp.org/389464290/embed" data-name="Getting Over It">Getting Over It</button>
+<button class="loadIframe" data-url="https://turbowarp.org/105500895/embed"data-name="Geometry Dash (levels 1-3)">Geometry Dash (levels 1-3)</button>
+<button class="loadIframe" data-url="https://turbowarp.org/216343253/embed" data-name="Geometry Dash Subzero">Geometry Dash Subzero</button>
+</div>
+</div>
+<div class="category">
+    <h1 onclick="toggleCategory('Horror')">
+    Horror
+    <i class="fas fa-chevron-down dropdown-btn"></i> <!-- Font Awesome icon for dropdown -->
+    </h1>
+    <div id="Horror" class="category-content">
+        <button class="loadIframe" data-url="https://myschoolisass.github.io/fnaf2" data-name="Fnaf 2">Fnaf 2</button>
+        <button class="loadIframe" data-url="https://myschoolisass.github.io/fnaf" data-name="Fnaf">Fnaf</button>
+        <button class="loadIframe" data-url="https://myschoolisass.github.io/fnaf3.html" data-name="Fnaf 3">Fnaf 3</button>
+    </div>
+</div>
+<div class="category">
+<h1 onclick="toggleCategory('No-Category')">
+    No Category
+    <i class="fas fa-chevron-down dropdown-btn"></i> <!-- Font Awesome icon for dropdown -->
+</h1>
+<div id="No-Category" class="category-content">
+<button class="loadIframe" data-url="https://calculus.mathonline.click/-l2f3.html" data-name="Learn To Fly 3">Learn to Fly 3</button>
+<button class="loadIframe" data-url="https://avid.mathonline.click/-f.html" data-name="Florr.io">Florr.io</button>
+<button class="loadIframe" data-url="https://myschoolisass.github.io/ts" data-name="Tanuki Sunset">Tanuki Sunset</button>
+<button class="loadIframe" data-url="https://calculus.mathonline.click/-bo.html" data-name="Boblox">Roblox (borken)</button>
+<button class="loadIframe" data-url="https://myschoolisass.github.io/st/" data-name="Sandtris">Sandtris</button>
+<button class="loadIframe" data-url="https://myschoolisass.github.io/eg/" data-name="Eggy Car">Eggy Car</button>
+<button class="loadIframe" data-url="https://myschoolisass.github.io/aw.html" data-name="Awesome Tanks">Awesome Tanks</button>
+<button class="loadIframe" data-url="https://myschoolisass.github.io/vx" data-name="Vex 7">Vex 7</button>
+<button class="loadIframe" data-url="https://myschoolisass.github.io/pb" data-name="Polybranch">Polybranch</button>
+<button class="loadIframe" data-url="https://myschoolisass.github.io/smh" data-name="Stickman Hook">Stickman Hook</button>
+<button class="loadIframe" data-url="https://myschoolisass.github.io/te" data-name="Tetris">Tetris</button>
+<button class="loadIframe" data-url="https://myschoolisass.github.io/whg" data-name="World's Hardest Game">World's Hardest Game (real)</button>
+<button class="loadIframe" data-url="https://myschoolisass.github.io/whg2" data-name="World's Hardest Game 2">World's Hardest Game 2 (real)</button>
+<button class="loadIframe" data-url="https://forms.gle/pZKpLhcvWGdwEBPY6" data-name="Request A Game">Request a Game</button>
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var buttons = document.querySelectorAll('.loadIframe');
+    var favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+    buttons.forEach(function (button) {
+        var gameButton = document.createElement('button');
+        var isFavorite = favorites.includes(button.getAttribute('data-url'));
+        
+        if (isFavorite) {
+            gameButton.classList.add('favorite-game');
+        } else {
+            gameButton.classList.add('normal-game');
+        }
+
+        var gameName = button.getAttribute('data-name') || button.textContent.trim();
+        gameButton.textContent = gameName;
+        gameButton.setAttribute('data-url', button.getAttribute('data-url'));
+        gameButton.setAttribute('data-name', gameName);
+
+        var favoriteButton = document.createElement('button');
+        favoriteButton.classList.add('favorite-button');
+        favoriteButton.textContent = 'Favorite';
+        gameButton.appendChild(favoriteButton);
+
+        button.parentNode.replaceChild(gameButton, button);
+
+        gameButton.addEventListener('click', function (event) {
+            if (!event.target.classList.contains('favorite-button')) {
+                var gameUrl = gameButton.getAttribute('data-url');
+                window.location.href=gameUrl
+            }
+        });
+
+        favoriteButton.addEventListener('click', function (event) {
+            var gameUrl = gameButton.getAttribute('data-url');
+            var gameName = gameButton.getAttribute('data-name');
+            if (!favorites.includes(gameUrl)) {
+                favorites.push(gameUrl);
+                localStorage.setItem('favorites', JSON.stringify(favorites));
+                displayFavorites();
+            }
+        });
+    });
+    document.getElementById('searchBox').addEventListener('input', function (e) {
+    var searchText = e.target.value.toLowerCase();
+    var gameButtons = document.querySelectorAll('.normal-game, .favorite-game');
+
+    gameButtons.forEach(function (gameButton) {
+        if (gameButton.textContent.toLowerCase().includes(searchText)) {
+            gameButton.style.display = 'block';
+        } else {
+            gameButton.style.display = 'none';
+        }
+    });
+});
+
+
+    function displayFavorites() {
+        var favoritesContainer = document.getElementById('favorites');
+        favoritesContainer.innerHTML = '';
+
+        favorites.forEach(function (favorite, index) {
+            var gameButton = document.createElement('button');
+            gameButton.classList.add('favorite-game');
+            gameButton.setAttribute('data-url', favorite);
+
+            var gameName = document.querySelector(`[data-url="${favorite}"]`).getAttribute('data-name');
+            gameButton.textContent = gameName;
+            gameButton.setAttribute('data-name', gameName);
+
+            favoritesContainer.appendChild(gameButton);
+
+            var removeButton = document.createElement('button');
+            removeButton.classList.add('remove-button');
+            removeButton.textContent = 'Remove';
+            gameButton.appendChild(removeButton);
+
+            removeButton.addEventListener('click', function (event) {
+                event.stopPropagation();
+                favorites.splice(index, 1);
+                localStorage.setItem('favorites', JSON.stringify(favorites));
+                displayFavorites();
+            });
+
+            gameButton.addEventListener('click', function (event) {
+                if (!event.target.classList.contains('favorite-button') && !event.target.classList.contains('remove-button')) {
+                    var gameUrl = gameButton.getAttribute('data-url');
+                window.location.href=gameurl;
+                            }
+            });
+        });
+    }
+
+    displayFavorites();
+});
+function toggleCategory(categoryId) {
+        var category = document.getElementById(categoryId);
+        category.classList.toggle('collapsed');
+    }
+</script>

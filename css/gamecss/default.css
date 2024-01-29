@@ -1,0 +1,133 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+}
+h1 {
+    color:white
+}
+#searchBox {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+iframe {
+    border: none;
+}
+
+/* Button Styles */
+button.loadIframe,
+button.favorite-game,
+button.favorite-button,
+button.normal-game,
+button.remove-button {
+    transition: transform 0.2s ease-in-out;
+    padding: 10px 20px;
+    border: 2px solid #4CAF50;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #4CAF50;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button.loadIframe:hover,
+button.favorite-game:hover,
+button.favorite-button:hover,
+button.normal-game:hover,
+button.remove-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+button.favorite-button,
+button.remove-button {
+    background-color: #4CAF50;
+    color: #ffffff;
+    border-color: #4CAF50;
+}
+
+/* Specific Game Button Styles */
+.favorite-game,
+.normal-game {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+}
+
+.favorite-game:hover,
+.normal-game:hover {
+    background-color: #45a049;
+}
+
+.favorite-button {
+    margin-left: 10px;
+    background-color: #f44336;
+}
+
+.favorite-button:hover{
+    background-color: #d32f2f;
+}
+.remove-button {
+    background-color: #ff9800;
+}
+
+.remove-button:hover {
+    background-color: #f57c00;
+}
+.hidden {
+    display: none;
+}
+.category {
+        margin-bottom: 10px;
+    }
+
+    .category h1 {
+        cursor: pointer;
+        transition: color 0.3s ease-in-out; /* Smooth color transition */
+    }
+
+    .category-content {
+        max-height: 1000px; /* Set a maximum height for animation */
+        transition: max-height 0.5s ease-in-out; /* Smooth height transition */
+        overflow: hidden; /* Hide content beyond max-height */
+    }
+
+    .category-content.collapsed {
+        max-height: 0; /* Collapse content when collapsed class is added */
+        padding: 0 10px; /* Adjust padding to maintain spacing */
+    }
+    .category h1 {
+            cursor: pointer;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            margin-bottom: 5px;
+            position: relative;
+        }
+
+        .category .dropdown-btn {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .category.collapsed h1 {
+            background-color: #45a049; /* Updated background color when collapsed */
+        }
+
+        .category.collapsed .dropdown-btn {
+            transform: translateY(-50%) rotate(-180deg);
+        }

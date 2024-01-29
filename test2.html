@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>_</title>
+<script src="./js/script.js"></script>
+<link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+  <div id="infoModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closePopup()">&times;</span>
+          <h1>Cl0@k3r</h1>
+    <h2>Features</h2>
+    <p>- URL randomiser</p>
+    <p>- Tons of Games</p>
+    <p>- Built In Iframer</p>
+    <p>- Window System</p>
+    <p>3kh0, the GOAT made most of the games :)</p>
+    </div>
+  </div>
+  <div class="quote-box">
+    <p id="quoteOfTheDay" class="quote-text"></p>
+  </div>
+<button id="button" onclick="loadIframeContent()" style="position:fixed; top:10px; left:10px">WindowMaker</button>
+<button id="button" onclick="loadIframer()" style="position:fixed;top:55px;left:10px;">WebsiteLoader</button>
+<button id="button" onclick="GameLoader()" style="position:fixed;top:100px;left:10px;">Games(Fullscreen)</button>
+<button id="button" onclick="ProxyFullscreen()" style="position:fixed;top:145px;left:10px">Proxy (Fullscreen)</button>
+<button id="button" onclick="Settings()" style="position:fixed;top:190px;left:10px">Settings</button>
+<button id="panicButton" style="display: none;" onclick="panicButton()">PANIC</button>
+<div id="alarmClock">
+  <div id="clockFace">
+    <p id="clockTime"></p>
+    <p id="clockAmPm"></p>
+  </div>
+</div>
+<iframe id="contentFrame" style="display:none; width:100%; height:100vh; z-index:-1;"></iframe>
+<button id="backButton" onclick="hideIframeContent()" style="display: none; position: fixed; bottom: 10px; left: 10px;">《</button>
+<script>
+  setInterval(Constant(), 1000)
+  let panicURL;
+  function Constant() {
+
+  let zIndex = 1000;
+    const canvas = document.createElement('canvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function Particle(x, y) {
+  this.x = x;
+  this.y = y;
+  this.vx = Math.random() * 10 - 5;
+  this.vy = Math.random() * 10 - 5;
+  this.color = '#' + Math.floor(Math.random() * 16777215).toString(16);
+  this.size = Math.random() * 10 + 5;
+  this.alpha = 1;
+  this.sides = Math.floor(Math.random() * 7) + 3; // Random number of sides between 3 and 9
+  this.initialSides = this.sides; // Store the initial number of sides
+  this.explodeTime = Date.now() + 500; // Set the time to explode (2 seconds)
+}
+
+Particle.prototype.update = function() {
+  const explosionsEnabled = localStorage.getItem('explosions') === 'true'; // Check if explosions are enabled
+  if (explosionsEnabled && Date.now() > this.explodeTime) {
+    this.size = 0; // Reduce size to 0 when it's time to explode
+    this.alpha = 0; // Set alpha to 0 to make it invisible
+  }
+  this.x += this.vx;
+  this.y += this.vy;
+};
+Particle.prototype.draw = function() {
+  ctx.globalAlpha = this.alpha;
+  ctx.fillStyle = this.color;
+  ctx.beginPath();
+  const angle = (Math.PI * 2) / this.sides;
+  ctx.moveTo(this.x + this.size * Math.cos(0), this.y + this.size * Math.sin(0));
+  for (let i = 1; i <= this.sides; i++) {
+    ctx.lineTo(
+      this.x + this.size * Math.cos(angle * i),
+      this.y + this.size * Math.sin(angle * i)
+    );
+  }
+  ctx.closePath();
+  ctx.fill();
+};
+
+
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(function(particle) {
+    particle.update(); // Update particle state
+    particle.draw(); // Draw particle
+  });
+  particles = particles.filter(function(particle) {
+    return particle.alpha > 0; // Remove invisible particles
+  });
+  requestAnimationFrame(draw);
+}
+
+
+canvas.style.position = 'fixed';
+canvas.style.top = '0';
+canvas.style.left = '0';
+canvas.style.zIndex = '-1';
+canvas.style.pointerEvents = 'none';
+
+document.body.appendChild(canvas);
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+window.addEventListener('resize', function() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+
+document.addEventListener('mousemove', function(event) {
+  for (let i = 0; i < 5; i++) {
+    particles.push(new Particle(event.clientX, event.clientY));
+  }
+});
+if(localStorage.getItem('draw') === 'false') {
+}
+else {
+  draw();
+}
+}
+function closePopup() {
+    document.getElementById("infoModal").style.display = "none";
+    localStorage.setItem('popupClosed', 'true');
+}
+window.onload = function() {
+    if(localStorage.getItem('popupClosed') === 'true') {
+        document.getElementById("infoModal").style.display = "none";
+    }
+}
+function panicButton() {
+  panicURL = localStorage.getItem("panicURL")
+  window.open(panicURL || "https://drive.google.com/drive/u/0/home");
+  }
+  
+</script>
+</body>
+</html>

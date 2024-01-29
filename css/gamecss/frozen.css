@@ -1,0 +1,166 @@
+/* Icy left-to-right gradient background */
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(90deg, #d8f4f8, #a1dafb, #6cc5fd, #36b0ff); /* Left-to-right icy blue gradient */
+}
+
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Main content styling */
+main {
+    padding: 20px;
+    text-align: center;
+}
+
+/* Styling for form and button */
+form {
+    margin-top: 20px;
+}
+
+button {
+    background-color: #5cbcf2; /* Icy blue button color */
+    color: white;
+    padding: 10px 15px;
+    margin: 10px 5px;
+    border: 1px solid #5cbcf2;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    border-radius: 5px;
+    outline: none;
+}
+
+button:hover {
+    background-color: #3498db; /* Darker blue on hover for contrast */
+    transform: scale(1.05);
+}
+
+h1, p {
+    text-align: center;
+    color: #fff; /* White text color for contrast */
+}
+
+h1 {
+    font-size: 2.5em;
+    color: white;
+}
+
+#searchBox {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+iframe {
+    border: none;
+}
+
+/* Button Styles */
+button.loadIframe,
+button.favorite-game,
+button.favorite-button,
+button.normal-game,
+button.remove-button {
+    transition: transform 0.2s ease-in-out;
+    padding: 10px 20px;
+    border: 2px solid #4CAF50;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #4CAF50;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button.loadIframe:hover,
+button.favorite-game:hover,
+button.favorite-button:hover,
+button.normal-game:hover,
+button.remove-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+button.favorite-button,
+button.remove-button {
+    background-color: #4CAF50;
+    color: #ffffff;
+    border-color: #4CAF50;
+}
+
+/* Specific Game Button Styles */
+.favorite-game,
+.normal-game {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+}
+
+.favorite-game:hover,
+.normal-game:hover {
+    background-color: #45a049;
+}
+
+.favorite-button {
+    margin-left: 10px;
+    background-color: #f44336;
+}
+
+.favorite-button:hover{
+    background-color: #d32f2f;
+}
+
+.remove-button {
+    background-color: #ff9800;
+}
+
+.remove-button:hover {
+    background-color: #f57c00;
+}
+
+.hidden {
+    display: none;
+}
+
+.category {
+    margin-bottom: 10px;
+}
+
+.category h1 {
+    cursor: pointer;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    margin-bottom: 5px;
+    position: relative;
+}
+
+.category .dropdown-btn {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.category.collapsed h1 {
+    background-color: #45a049; /* Updated background color when collapsed */
+}
+
+.category.collapsed .dropdown-btn {
+    transform: translateY(-50%) rotate(-180deg);
+}
