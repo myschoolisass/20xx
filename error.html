@@ -60,25 +60,16 @@
 
         detect_extensions().then(result => {
           if (result.length === 1) {
-            var urls = [
-    "https://trigonometry.mathonline.click",
-    "https://algebra.mathonline.click",
-    "https://chess.mathonline.click",
-    "https://fractions.mathonline.click",
-    "https://homework.mathonline.click",
-];
 
-var randomUrl = urls[Math.floor(Math.random() * urls.length)];
 var openUrl = "https://www.beaverton.k12.or.us/departments/teaching-learning/future-ready/canvas";
-var iframeSrc = randomUrl + '/test2.html';
 
 var x = window.open(openUrl);
 x.document.write(`
-  <iframe src='${iframeSrc}' 
+  <iframe src='./test2.html' 
           style='position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;'>
   </iframe>
   <title>Dashboard</title>
-  <link rel='icon' href='${randomUrl}/images/canvas.png'>
+  <link rel='icon' href='./images/canvas.png'>
 `);
 self.close();
 

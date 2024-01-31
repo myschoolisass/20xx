@@ -7,6 +7,9 @@ window.addEventListener('beforeunload', function (e) {
       e.returnValue = ''; // For some older browsers
   }
 });
+function Anura() {
+  window.location.href='https://anura.mathonline.click'
+}
 function HideButtons() {
     const buttons = document.querySelectorAll('button');
     buttons.forEach(button => {
@@ -34,26 +37,26 @@ function GetButtons() {
     document.getElementById('backButton').style.display = 'none'; 
 }
 function ProxyFullscreen() {
-    let contentFrame = document.getElementById('contentFrame');
-    contentFrame.style.display = 'block';
-    HideButtons();
+  let contentFrame = document.getElementById('contentFrame');
+  contentFrame.style.display = 'block';
+  HideButtons();
 
-    let proxyItem = localStorage.getItem('proxy');
-    let iframeUrl;
+  let proxyItem = localStorage.getItem('proxy');
+  let iframeUrl;
 
-    if (proxyItem === 'astroid') {
-        iframeUrl = 'https://astroid.mathonline.click/worksheets';
-    } else if (proxyItem === 'interstellar') {
-        iframeUrl = 'https://n-eight-lime.vercel.app/'
-}else if (proxyItem === 'hypertabs'){
-  iframeUrl = 'https://math.math.mathonline.click';
-}else {
-        iframeUrl = 'https://math.mathonline.click';
-    }
-    
-    contentFrame.srcdoc = `
-        <iframe src="${iframeUrl}" width=100% height=${contentFrame.clientHeight}></iframe>`;
+  if (proxyItem === 'astroid') {
+      const randomNum = Math.random();
+      iframeUrl = randomNum < 0.5 ? 'https://astroid.mathonline.click/worksheets' : 'https://tbag.mathonline.click/';
+  } else if (proxyItem === 'interstellar') {
+      iframeUrl = 'https://n-eight-lime.vercel.app/';
+  } else if (proxyItem === 'hypertabs') {
+      const randomNum = Math.random();
+      iframeUrl = randomNum < 0.5 ? 'https://math.math.mathonline.click' : 'https://hyper.mathonline.click';
+  } else {
+      iframeUrl = 'https://math.math.mathonline.click';
+  }
 }
+
 
 
 function loadIframeContent() {
