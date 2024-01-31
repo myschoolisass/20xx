@@ -53,7 +53,7 @@ function ProxyFullscreen() {
       const randomNum = Math.random();
       iframeUrl = randomNum < 0.5 ? 'https://math.math.mathonline.click' : 'https://hyper.mathonline.click';
   } else {
-      iframeUrl = 'https://math.math.mathonline.click';
+      iframeUrl = 'https://n-eight-lime.vercel.app/';
   }
 }
 
