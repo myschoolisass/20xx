@@ -1,8 +1,9 @@
+
+var tabCloseFlag = localStorage.getItem('tabclose');
+if (tabCloseFlag === 'true') {
 window.addEventListener('beforeunload', function (e) {
   // Check if the "tabclose" item in localStorage is set to true
-  var tabCloseFlag = localStorage.getItem('tabclose');
 
-  if (tabCloseFlag === 'true') {
       var confirmationMessage = 'Are you sure you want to leave?';
 
       // Display a custom confirmation dialog
@@ -11,7 +12,7 @@ window.addEventListener('beforeunload', function (e) {
           e.returnValue = 'anti-closing, brought to you by stupid'; // For some older browsers
       }
   }
-});
+)};
 
 
 
