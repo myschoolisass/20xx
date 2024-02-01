@@ -55,10 +55,8 @@ function ProxyFullscreen() {
     let contentFrame = document.getElementById('contentFrame');
     contentFrame.style.display = 'block';
     HideButtons();
-
     let proxyItem = localStorage.getItem('proxy');
     let iframeUrl;
-
     if (proxyItem === 'astroid') {
         const randomNum = Math.random();
         iframeUrl = randomNum < 0.5 ? 'https://astroid.mathonline.click/worksheets' : 'https://tbag.mathonline.click/';
@@ -73,14 +71,10 @@ function ProxyFullscreen() {
     contentFrame.srcdoc = `
     <iframe src="${iframeUrl}" width=100% height=${contentFrame.clientHeight}></iframe>`;
 }
-
-  
-  
   function loadIframeContent() {
       let contentFrame = document.getElementById('contentFrame');
       contentFrame.style.display = 'block';
       HideButtons();
-      
       contentFrame.srcdoc = `
           <iframe src="./test.html" width=100% height=${contentFrame.clientHeight}>`;
   }
@@ -91,7 +85,6 @@ function ProxyFullscreen() {
       iframe.srcdoc = `
       <iframe src="./settings.html" width=100% height=${contentFrame.clientHeight}>`;
   }
-  
   function loadIframer() {
       let website = prompt("Enter the website URL:");
       if (!website.startsWith("https://")) {
@@ -102,7 +95,6 @@ function ProxyFullscreen() {
       iframe.style.display = 'block';
       iframe.srcdoc = `<html><head></head><body><iframe src="${website}" width="100%" height="${iframe.clientHeight}"></iframe></body></html>`;
   }
-  
   function GameLoader() {
       document.getElementById('contentFrame').style.display = 'block';
       HideButtons();
@@ -117,7 +109,6 @@ function ProxyFullscreen() {
       let iframe = document.getElementById('contentFrame');
       iframe.srcdoc = '';
   }
-  
   function updateClock() {
       const now = new Date();
       let hours = now.getHours();
@@ -131,8 +122,6 @@ function ProxyFullscreen() {
       document.getElementById('clockAmPm').textContent = amPm;
     }
     setInterval(updateClock, 1000);
-  
-    
     document.addEventListener("DOMContentLoaded", function() {
       const quotes = [
         "If you steal from one author, it's plagiarism; if you steal from many, it's research.",
@@ -210,7 +199,6 @@ function ProxyFullscreen() {
           "The man who has confidence in himself gains the confidence of others.",
           "Management is doing things right; leadership is doing the right things.",
       ];
-        
           const quoteType = localStorage.getItem('quoteType');
         
           if (quoteType === 'minute') {
@@ -238,8 +226,7 @@ function ProxyFullscreen() {
                 displayQuote(quotes[quoteIndex]);  
           }
           setInterval(displayQuote(quotes[quoteIndex]),60000)
-        };
-        
+        };  
         function displayQuote(quote) {
           const quoteElement = document.getElementById('quoteOfTheDay');
           if (quoteElement) {

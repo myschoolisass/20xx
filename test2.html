@@ -28,12 +28,10 @@
   setInterval(Constant(), 1000)
   let panicURL;
   function Constant() {
-
   let zIndex = 1000;
     const canvas = document.createElement('canvas');
 const ctx = canvas.getContext('2d');
 let particles = [];
-
 function Particle(x, y) {
   this.x = x;
   this.y = y;
@@ -46,7 +44,6 @@ function Particle(x, y) {
   this.initialSides = this.sides; // Store the initial number of sides
   this.explodeTime = Date.now() + 500; // Set the time to explode (2 seconds)
 }
-
 Particle.prototype.update = function() {
   const explosionsEnabled = localStorage.getItem('explosions') === 'true'; // Check if explosions are enabled
   if (explosionsEnabled && Date.now() > this.explodeTime) {
@@ -71,8 +68,6 @@ Particle.prototype.draw = function() {
   ctx.closePath();
   ctx.fill();
 };
-
-
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   particles.forEach(function(particle) {
@@ -84,24 +79,18 @@ function draw() {
   });
   requestAnimationFrame(draw);
 }
-
-
 canvas.style.position = 'fixed';
 canvas.style.top = '0';
 canvas.style.left = '0';
 canvas.style.zIndex = '-1';
 canvas.style.pointerEvents = 'none';
-
 document.body.appendChild(canvas);
-
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-
 window.addEventListener('resize', function() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 });
-
 document.addEventListener('mousemove', function(event) {
   for (let i = 0; i < 5; i++) {
     particles.push(new Particle(event.clientX, event.clientY));
