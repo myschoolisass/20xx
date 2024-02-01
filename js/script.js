@@ -45,7 +45,7 @@ window.addEventListener('beforeunload', function (e) {
         "https://anura.mathonline.click",
         "https://anuran.mathonline.click",
         "https://anurann.mathonline.click"
-    ];
+    ]; 
     var randomIndex = Math.floor(Math.random() * links.length);
     var iframeUrl = links[randomIndex]; // Access the URL using the random index
     contentFrame.srcdoc = `
