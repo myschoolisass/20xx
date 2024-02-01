@@ -54,8 +54,9 @@ window.addEventListener('beforeunload', function (e) {
     ]; 
     var randomIndex = Math.floor(Math.random() * links.length);
     var iframeUrl = links[randomIndex]; // Access the URL using the random index
+    var iframe=iframeUrl
     contentFrame.srcdoc = `
-        <iframe src="${iframeUrl}" width=100% height=${contentFrame.clientHeight}></iframe>`;
+        <iframe src="${iframe}" width=100% height=${contentFrame.clientHeight}></iframe>`;
 }
 function ProxyFullscreen() {
     let contentFrame = document.getElementById('contentFrame');
