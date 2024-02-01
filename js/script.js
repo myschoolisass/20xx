@@ -1,12 +1,18 @@
 window.addEventListener('beforeunload', function (e) {
-    var confirmationMessage = 'Are you sure you want to leave?';
-  
-    // Display a custom confirmation dialog
-    if (!window.confirm(confirmationMessage)) {
-        e.preventDefault();
-        e.returnValue = ''; // For some older browsers
-    }
-  });
+  // Check if the "tabclose" item in localStorage is set to true
+  var tabCloseFlag = localStorage.getItem('tabclose');
+
+  if (tabCloseFlag === 'true') {
+      var confirmationMessage = 'Are you sure you want to leave?';
+
+      // Display a custom confirmation dialog
+      if (!window.confirm(confirmationMessage)) {
+          e.preventDefault();
+          e.returnValue = 'anti-closing, brought to you by stupid'; // For some older browsers
+      }
+  }
+});
+
 
 
   
