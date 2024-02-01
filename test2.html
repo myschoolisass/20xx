@@ -6,18 +6,6 @@
 <link rel="stylesheet" href="./css/index.css">
 </head>
 <body>
-  <div id="infoModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closePopup()">&times;</span>
-          <h1>Cl0@k3r</h1>
-    <h2>Features</h2>
-    <p>- URL randomiser</p>
-    <p>- Tons of Games</p>
-    <p>- Built In Iframer</p>
-    <p>- Window System</p>
-    <p>3kh0, the GOAT made most of the games :)</p>
-    </div>
-  </div>
   <div class="quote-box">
     <p id="quoteOfTheDay" class="quote-text"></p>
   </div>
@@ -124,15 +112,6 @@ if(localStorage.getItem('draw') === 'false') {
 else {
   draw();
 }
-}
-function closePopup() {
-    document.getElementById("infoModal").style.display = "none";
-    localStorage.setItem('popupClosed', 'true');
-}
-window.onload = function() {
-    if(localStorage.getItem('popupClosed') === 'true') {
-        document.getElementById("infoModal").style.display = "none";
-    }
 }
 function panicButton() {
   panicURL = localStorage.getItem("panicURL")
