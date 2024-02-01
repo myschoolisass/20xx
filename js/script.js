@@ -28,9 +28,7 @@ window.addEventListener('beforeunload', function (e) {
   }
   
   function GetButtons() {
-    let contentFrame = document.getElementById('contentFrame');
-    contentFrame.style.display = 'block';
-    HideButtons();
+
       const buttons = document.querySelectorAll('button');
       buttons.forEach(button => {
           button.style.display = 'block';
@@ -40,6 +38,9 @@ window.addEventListener('beforeunload', function (e) {
       document.getElementById('backButton').style.display = 'none'; 
   }
   function Anura() {
+    let contentFrame = document.getElementById('contentFrame');
+    contentFrame.style.display = 'block';
+    HideButtons();
     var links = [
         "https://anura.mathonline.click",
         "https://anuran.mathonline.click",
