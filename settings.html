@@ -63,12 +63,6 @@ select:focus {
     <option value="false">No</option>
   <option value="true">Yes</option>
 </select>
-<br>
-<label for="tabclose">Confirm Closing Tab?</label>
-<select id="tabclose" onchange="saveSettings()">
-<option value="false">No</option>
-<option value="true">Yes</option>
-</select>
 <!--  <br>
   <label for="gamestyle">Game Select Style</label>
   <select id="gamestyle" onchange="saveSettings()">
@@ -108,12 +102,10 @@ select:focus {
     const panicURL = document.getElementById("panicURL").value;
     const explosions = document.getElementById("explosions").value;
     const quoteType = document.getElementById("quoteType").value;
-    const tabclose = document.getElementById("tabclose").value;
  //  const gameStyle = document.getElementById("gamestyle").value;
     
  //   localStorage.setItem("gamestyle", gameStyle)
     localStorage.setItem("quoteType", quoteType)
-    localStorage.setItem("tabclose", tabclose)
     localStorage.setItem("explosions", explosions)
     localStorage.setItem("panicURL", panicURL);
     localStorage.setItem("panic", panic);
@@ -124,7 +116,6 @@ select:focus {
   window.onload = function() {
  //   const gameStyle = document.getElementById("gamestyle").value;
     const quoteType = localStorage.getItem("quoteType");
-    const tabclose = localStorage.getItem("tabclose")
     const Explosions = localStorage.getItem("explosions");
     const savedType = localStorage.getItem("userType");
     const savedBackground = localStorage.getItem("draw");
@@ -132,9 +123,6 @@ select:focus {
     const Panic = localStorage.getItem("panic")
     const PanicURL = localStorage.getItem("panicURL")
 
-    if (tabclose) {
-      document.getElementById("tabclose").value = tabclose;
-    }
     if (quoteType) {
       document.getElementById("quoteType").value = quoteType;
     }
