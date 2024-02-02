@@ -44,7 +44,7 @@ window.addEventListener('beforeunload', function (e) {
       document.getElementById('quoteOfTheDay').style.display='block';
       document.getElementById('backButton').style.display = 'none'; 
   }
-  function anura() {
+  function Anura() {
     let contentFrame = document.getElementById('contentFrame');
     contentFrame.style.display = 'block';
     HideButtons();
