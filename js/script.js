@@ -63,6 +63,9 @@ function ProxyFullscreen() {
     HideButtons();
     let proxyItem = localStorage.getItem('proxy');
     let iframeUrl;
+    if (proxyItem === 'anura') {
+      Anura();
+    } else {
     if (proxyItem === 'astroid') {
         const randomNum = Math.random();
         iframeUrl = 'https://astroid.mathonline.click/worksheets';
@@ -76,6 +79,7 @@ function ProxyFullscreen() {
     }
     contentFrame.srcdoc = `
     <iframe src="${iframeUrl}" width=100% height=${contentFrame.clientHeight}></iframe>`;
+  }
 }
   function loadIframeContent() {
       let contentFrame = document.getElementById('contentFrame');

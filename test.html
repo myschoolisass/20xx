@@ -143,7 +143,8 @@ iframe {
 
 <button id="button" onclick="createIframe('./hurr.html')">Load Proxy</button>
 <button id="button2" onclick="createIframe('./games.html')">Games</button>
-<button id="button3" onclick="processURL()">Iframer</button>
+<button id="button3" onclick="createIframe('./settings.html')">Settings</button>
+<button id="button4" onclick="processURL()">Iframer</button>
 <script>
 
     $(function() {
@@ -183,7 +184,7 @@ iframe {
                             });
             iframeContainer.css('z-index', highestZIndex); // Set initial z-index
         }
-        $("#button3").click(function() {
+        $("#button4").click(function() {
             processURL();
         })
         $("#button").click(function() {
@@ -196,13 +197,18 @@ iframe {
         createIframe('https://igobylotsofnames.mathonline.click');
 }else if (proxyItem === 'hypertabs'){
     createIframe('https://math.math.mathonline.click')
-} else {
+} else if (proxyItem === 'anura') {
+    createIframe('https://anurann.mathonline.click')
+}else {
     createIframe('./hurr.html');
     }
         });
         $("#button2").click(function() {
             createIframe('./games.html');
         });
+        $('#button3').click(function() {
+            createIframe('./settings.html')
+        })
     });
     </script>
 </body>
