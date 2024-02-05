@@ -75,6 +75,7 @@ function ProxyFullscreen() {
         const randomNum = Math.random();
         iframeUrl = randomNum < 0.5 ? 'https://math.math.mathonline.click' : 'https://hyper.mathonline.click';
     } else {
+      const randomNum = Math.random();
         iframeUrl = randomNum < 0.5 ? 'https://math.math.mathonline.click' : 'https://hyper.mathonline.click';
     }
     contentFrame.srcdoc = `
