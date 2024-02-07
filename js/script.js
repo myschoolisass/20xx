@@ -42,21 +42,17 @@ window.addEventListener('beforeunload', function (e) {
       document.getElementById('backButton').style.display = 'none'; 
   }
   function Anura() {
-    let contentFrame = document.getElementById('contentFrame');
-    contentFrame.style.display = 'block';
-    HideButtons();
     var links = [
-        "https://anura.mathonline.click",
-        "https://anuran.mathonline.click",
-        "https://anurann.mathonline.click"
+      "https://anura.mathonline.click",
+      "https://anuran.mathonline.click",
+      "https://anurann.mathonline.click"
     ]; 
     var randomIndex = Math.floor(Math.random() * links.length);
     var iframeUrl = links[randomIndex]; // Access the URL using the random index
     console.log(iframeUrl)
-    var iframe=iframeUrl
-    contentFrame.srcdoc = `
-        <iframe src="${iframe}" width=100% height=${contentFrame.clientHeight}></iframe>`;
-}
+    document.getElementById('contentFrame').src = iframeUrl;
+    document.getElementById('contentFrame').style.display = 'block';
+  }
 function ProxyFullscreen() {
     let contentFrame = document.getElementById('contentFrame');
     contentFrame.style.display = 'block';
