@@ -74,8 +74,8 @@ function ProxyFullscreen() {
       const randomNum = Math.random();
         iframeUrl = randomNum < 0.5 ? 'https://math.math.mathonline.click' : 'https://hyper.mathonline.click';
     }
-    contentFrame.srcdoc = `
-    <iframe src="${iframeUrl}" width=100% height=${contentFrame.clientHeight}></iframe>`;
+    document.getElementById('contentFrame').src= iframeUrl;
+    document.getElementById('contentFrame').style.display = 'block';
   }
 }
   function loadIframeContent() {
@@ -100,15 +100,14 @@ function ProxyFullscreen() {
       HideButtons(); 
       let iframe = document.getElementById('contentFrame');
       iframe.style.display = 'block';
-      iframe.srcdoc = `<html><head></head><body><iframe src="${website}" width="100%" height="${iframe.clientHeight}"></iframe></body></html>`;
+      iframe.src = website;
   }
   function GameLoader() {
       document.getElementById('contentFrame').style.display = 'block';
       HideButtons();
       let iframe = document.getElementById('contentFrame');
-      iframe.srcdoc = `"
-   <iframe src="https://myschoolisass.github.io/games.html" width="100%" height="${iframe.clientHeight}"></iframe>
-   `;
+      iframe.src='https://myschoolisass.github.io/games.html'
+      iframe.style.display = 'block';
   }
   function hideIframeContent() {
       document.getElementById('contentFrame').style.display = 'none';
