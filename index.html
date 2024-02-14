@@ -1,4 +1,38 @@
 <!DOCTYPE html>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const button = document.querySelector('.title-button');
+        button.addEventListener('click', function() {
+            // Create the popup
+            const popup = document.createElement('div');
+            popup.innerHTML = `
+                <div style="position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background-color:white; padding:20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 10px; z-index: 1000;">
+                    <iframe src="./popupsettings.html" style="width:600px; height:400px; border:none;"></iframe>
+                </div>`;
+            document.body.appendChild(popup);
+
+            // Animation for the popup
+            popup.style.opacity = 0;
+            let opacity = 0;
+            const interval = setInterval(function() {
+                if (opacity < 1) {
+                    opacity += 0.05;
+                    popup.style.opacity = opacity;
+                } else {
+                    clearInterval(interval);
+                }
+            }, 20);
+
+            // Click outside iframe to remove the popup
+            popup.addEventListener('click', function(event) {
+                if (event.target === popup) {
+                    popup.remove();
+                }
+            });
+        });
+    });
+</script>
+
 <html>
 <head>
     <title>Geometry Explained</title>
@@ -16,8 +50,16 @@
             );
             color: #000;
         }
-        h1 {
-            color: #1E90FF;
+        .title-button {
+            background: none;
+            border: none;
+            color: black;
+            font-size: 2em;
+            cursor: pointer;
+            transition: color 0.5s ease; /* Smooth transition for color change */
+        }
+        .title-button:hover, .title-button:focus {
+            color: #1E90FF; /* Original title color, makes the button 'appear' on hover/focus */
         }
         h2 {
             color: #008000;
@@ -33,7 +75,7 @@
     </style>
 </head>
 <body>
-    <h1>Welcome to the World of Geometry</h1>
+    <button class="title-button">Welcome to the World of Geometry</button>
     
     <h2>Introduction to Geometry</h2>
     <p>Geometry is a branch of mathematics that deals with the study of shapes, sizes, properties, and dimensions of objects in space. It plays a crucial role in various fields, from architecture to physics.</p>
@@ -59,7 +101,45 @@
     </ul>
     
     <footer>
-        <p>&copy; 2023 Math Online</p>
+        <p id="hiddenButton" style="cursor: pointer; background-color: transparent; border: none;">&copy; 2023 Math Online</p>
     </footer>
+    <script>
+        document.getElementById("hiddenButton").addEventListener("click", function() {
+            const blocks = document.querySelectorAll('body > *'); // Get all direct children of the body
+    
+            let index = 0;
+            const removeInterval = setInterval(function() {
+                if (index < blocks.length) {
+                    blocks[index].style.opacity = 0; // Set opacity to 0 for fade-out effect
+                    blocks[index].style.transition = 'opacity 0.5s ease'; // Add transition for smooth effect
+                    blocks[index].style.pointerEvents = 'none'; // Disable pointer events to prevent interaction
+                    index++;
+                } else {
+                    clearInterval(removeInterval);
+                    const proxyItem = localStorage.getItem("proxy");
+                    console.log(proxyItem)
+                    let iframeUrl;
+                    if (proxyItem === 'astroid') {
+                        iframeUrl = 'https://astroid.mathonline.click/worksheets';
+                    } else if (proxyItem === 'interstellar') {
+                        iframeUrl = 'https://n-eight-lime.vercel.app/';
+                    } else if (proxyItem === 'hypertabs') {
+                        const randomNum = Math.random();
+                        iframeUrl = randomNum < 0.5 ? 'https://anurann.mathonline.click/browser.html' : 'https://anura.mathonline.click/browser.html';
+                    } else if (proxyItem === 'cloak3r'){
+                        iframeUrl='./test2.html';
+                    }else{
+                        const randomNum = Math.random();
+                        iframeUrl = randomNum < 0.5 ? 'https://anurann.mathonline.click/browser.html' : 'https://anura.mathonline.click/browser.html';
+                    }
+    
+                    console.log("Iframe URL:", iframeUrl);
+                    console.log("Viewport Height:", window.innerHeight);
+                    
+                    document.body.innerHTML = `<iframe src="${iframeUrl}" width="100%" height="${window.innerHeight}px"></iframe>`; // Remove all HTML content from the body
+                }
+            }, 100);
+        });
+    </script>    
 </body>
 </html>
