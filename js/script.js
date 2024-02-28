@@ -69,10 +69,10 @@ function ProxyFullscreen() {
         iframeUrl = 'https://n-eight-lime.vercel.app/';
     } else if (proxyItem === 'hypertabs') {
         const randomNum = Math.random();
-        iframeUrl = randomNum < 0.5 ? 'https://math.math.mathonline.click' : 'https://hyper.mathonline.click';
+        iframeUrl = randomNum < 0.5 ? 'https://anura.mathonline.click/browser.html' : 'https://anurann.mathonline.click/browser.html';
     } else {
       const randomNum = Math.random();
-        iframeUrl = randomNum < 0.5 ? 'https://math.math.mathonline.click' : 'https://hyper.mathonline.click';
+        iframeUrl = randomNum < 0.5 ? 'https://anura.mathonline.click/browser.html' : 'https://anurann.mathonline.click/browser.html';
     }
     document.getElementById('contentFrame').src= iframeUrl;
     document.getElementById('contentFrame').style.display = 'block';
