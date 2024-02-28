@@ -103,7 +103,7 @@ function ProxyFullscreen() {
       document.getElementById('contentFrame').style.display = 'block';
       HideButtons();
       let iframe = document.getElementById('contentFrame');
-      iframe.src='https://myschoolisass.github.io/games.html'
+      iframe.src='./games.html'
       iframe.style.display = 'block';
   }
   function hideIframeContent() {
