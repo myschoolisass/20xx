@@ -66,10 +66,10 @@ function ProxyFullscreen() {
         const randomNum = Math.random();
         iframeUrl = 'https://astroid.mathonline.click/worksheets';
     } else if (proxyItem === 'interstellar') {
-        iframeUrl = 'https://n-eight-lime.vercel.app/';
+        iframeUrl = './woah.html';
     } else {
       const randomNum = Math.random();
-        iframeUrl = 'https://n-eight-lime.vercel.app/';
+        iframeUrl = './woah.html';
     }
     document.getElementById('contentFrame').src= iframeUrl;
     document.getElementById('contentFrame').style.display = 'block';
