@@ -48,12 +48,10 @@ function ProxyFullscreen() {
     let proxyItem = localStorage.getItem('proxy');
     let iframeUrl;
     if (proxyItem === 'astroid') {
-        const randomNum = Math.random();
         iframeUrl = './lol.html';
     } else if (proxyItem === 'interstellar') {
         iframeUrl = './woah.html';
     } else {
-      const randomNum = Math.random();
         iframeUrl = './woah.html';
     }
     document.getElementById('contentFrame').src= iframeUrl;
