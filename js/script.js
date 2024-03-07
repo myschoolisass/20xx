@@ -1,10 +1,3 @@
-window.addEventListener('beforeunload', function (e) {
-  if (!window.confirm('Are you sure you want to leave?')) {
-    e.preventDefault();
-    e.returnValue = 'anti-closing, brought to you by stupid';
-  }
-});
-
 function toggleButtons(display) {
   const buttons = document.querySelectorAll('button');
   buttons.forEach(button => {
@@ -27,11 +20,16 @@ function loadIframe(url, displayButtons = false) {
   }
 }
 
+function hideIframeContent() {
+  document.getElementById('contentFrame').style.display = 'none';
+  toggleButtons(true);
+  document.getElementById('contentFrame').srcdoc = '';
+}
 function ProxyFullscreen() {
   const proxyItem = localStorage.getItem('proxy');
   switch (proxyItem) {
     case 'astroid':
-      loadIframe('./lol.html');
+      loadIframe('https://astroid.mathonline.click/worksheets');
       break;
     case 'interstellar':
       loadIframe('./woah.html');
@@ -54,61 +52,5 @@ function loadIframer() {
 }
 
 function GameLoader() {
-  loadIframe('https://myschoolisass.github.io/games.html');
-}
-
-function hideIframeContent() {
-  document.getElementById('contentFrame').style.display = 'none';
-  toggleButtons(true);
-  document.getElementById('contentFrame').srcdoc = '';
-}
-
-function updateClock() {
-  const now = new Date();
-  let hours = now.getHours();
-  const minutes = now.getMinutes();
-  const seconds = now.getSeconds();
-  const amPm = hours >= 12 ? 'PM' : 'AM';
-  hours = hours % 12 || 12;
-
-  const time = `${hours}:${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-  document.getElementById('clockTime').textContent = time;
-  document.getElementById('clockAmPm').textContent = amPm;
-}
-setInterval(updateClock, 1000);
-
-document.addEventListener("DOMContentLoaded", function () {
-  const quotes = [
-    // Add your quotes here
-  ];
-  const quoteType = localStorage.getItem('quoteType');
-  let quoteIndex;
-  switch (quoteType) {
-    case 'minute':
-      quoteIndex = new Date().getMinutes() - 1;
-      break;
-    case 'hour':
-      quoteIndex = new Date().getHours() - 1;
-      break;
-    case 'day':
-    default:
-      quoteIndex = new Date().getDate() - 1;
-  }
-  if (quoteIndex >= 0 && quoteIndex < quotes.length) {
-    displayQuote(quotes[quoteIndex]);
-  }
-  setInterval(() => {
-    if (quoteIndex >= 0 && quoteIndex < quotes.length) {
-      displayQuote(quotes[quoteIndex]);
-    }
-  }, 60000);
-});
-
-function displayQuote(quote) {
-  const quoteElement = document.getElementById('quoteOfTheDay');
-  if (quoteElement) {
-    quoteElement.textContent = quote;
-  } else {
-    console.error("Element with ID 'quoteOfTheDay' not found.");
-  }
+  loadIframe('./games.html');
 }
