@@ -87,8 +87,10 @@ function ProxyFullscreen() {
       document.getElementById('contentFrame').style.display = 'block';
       HideButtons();
       let iframe = document.getElementById('contentFrame');
-      iframe.src='./games.html'
-      iframe.style.display = 'block';
+      contentFrame.srcdoc = `
+      <iframe src="./games.html" width="100%" height="${contentFrame.clientHeight}px"></iframe>
+  `;
+        iframe.style.display = 'block';
   }
   function hideIframeContent() {
       document.getElementById('contentFrame').style.display = 'none';
