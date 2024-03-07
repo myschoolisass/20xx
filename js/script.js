@@ -41,27 +41,12 @@ window.addEventListener('beforeunload', function (e) {
       document.getElementById('quoteOfTheDay').style.display='block';
       document.getElementById('backButton').style.display = 'none'; 
   }
-  function Anura() {
-    var links = [
-      "https://anura.mathonline.click",
-      "https://anuran.mathonline.click",
-      "https://anurann.mathonline.click"
-    ]; 
-    var randomIndex = Math.floor(Math.random() * links.length);
-    var iframeUrl = links[randomIndex]; // Access the URL using the random index
-    console.log(iframeUrl)
-    document.getElementById('contentFrame').src = iframeUrl;
-    document.getElementById('contentFrame').style.display = 'block';
-  }
 function ProxyFullscreen() {
     let contentFrame = document.getElementById('contentFrame');
     contentFrame.style.display = 'block';
     HideButtons();
     let proxyItem = localStorage.getItem('proxy');
     let iframeUrl;
-    if (proxyItem === 'anura') {
-      Anura();
-    } else {
     if (proxyItem === 'astroid') {
         const randomNum = Math.random();
         iframeUrl = 'https://astroid.mathonline.click/worksheets';
@@ -74,7 +59,6 @@ function ProxyFullscreen() {
     document.getElementById('contentFrame').src= iframeUrl;
     document.getElementById('contentFrame').style.display = 'block';
   }
-}
   function loadIframeContent() {
       let contentFrame = document.getElementById('contentFrame');
       contentFrame.style.display = 'block';
@@ -119,7 +103,6 @@ function ProxyFullscreen() {
       const seconds = now.getSeconds();
       const amPm = hours >= 12 ? 'PM' : 'AM';
       hours = hours % 12 || 12; // Convert to 12-hour format
-    
       const time = `${hours}:${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
       document.getElementById('clockTime').textContent = time;
       document.getElementById('clockAmPm').textContent = amPm;
