@@ -54,8 +54,10 @@ function ProxyFullscreen() {
     } else {
         iframeUrl = './woah.html';
     }
-    document.getElementById('contentFrame').src= iframeUrl;
     document.getElementById('contentFrame').style.display = 'block';
+    contentFrame.srcdoc = `
+    <iframe src="${iframeUrl}" width="100%" height="${contentFrame.clientHeight}px"></iframe>
+`;    
   }
   function loadIframeContent() {
       let contentFrame = document.getElementById('contentFrame');
