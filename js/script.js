@@ -56,8 +56,7 @@ function ProxyFullscreen() {
     }
     document.getElementById('contentFrame').style.display = 'block';
     contentFrame.srcdoc = `
-    <iframe src="${iframeUrl}" width="100%" height="${contentFrame.clientHeight}px"></iframe>
-`;    
+    <iframe src="${iframeUrl}" width="100%" height=${contentFrame.clientHeight}>`;    
   }
   function loadIframeContent() {
       let contentFrame = document.getElementById('contentFrame');
@@ -88,8 +87,7 @@ function ProxyFullscreen() {
       HideButtons();
       let iframe = document.getElementById('contentFrame');
       contentFrame.srcdoc = `
-      <iframe src="./games.html" width="100%" height="${contentFrame.clientHeight}px"></iframe>
-  `;
+      <iframe src="./games.html" width="100%" height=${contentFrame.clientHeight}>`;
         iframe.style.display = 'block';
   }
   function hideIframeContent() {
