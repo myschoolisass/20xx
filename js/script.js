@@ -51,6 +51,8 @@ function ProxyFullscreen() {
         iframeUrl = './lol.html';
     } else if (proxyItem === 'interstellar') {
         iframeUrl = './woah.html';
+    } else if (proxyItem === 'doge') {
+      iframeurl = './eh.html'
     } else {
         iframeUrl = './woah.html';
     }
