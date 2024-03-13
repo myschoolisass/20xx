@@ -53,6 +53,8 @@ function ProxyFullscreen() {
         iframeUrl = './woah.html';
     } else if (proxyItem === 'doge') {
       iframeurl = './eh.html'
+    } else if (proxyItem === 'hyper') {
+      iframeUrl='https://to.mathonline.click'
     } else {
         iframeUrl = './woah.html';
     }
