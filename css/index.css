@@ -45,7 +45,7 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4; /* Existing background color */
-    background-image: url('/images/gp1.png'); /* Add this line for background image */
+    background-image: url('/20xx/images/gp1.png'); /* Add this line for background image */
     background-size: cover; /* Ensures the image covers the entire body */
     background-repeat: no-repeat; /* Prevents the image from repeating */
     margin: 0;
