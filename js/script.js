@@ -48,7 +48,7 @@ function ProxyFullscreen() {
     let proxyItem = localStorage.getItem('proxy');
     let iframeUrl;
     if (proxyItem === 'astroid') {
-        iframeUrl = './lol.html';
+        iframeUrl = 'https://astroid.mathonline.click';
     } else if (proxyItem === 'interstellar') {
         iframeUrl = './woah.html';
     } else if (proxyItem === 'doge') {
