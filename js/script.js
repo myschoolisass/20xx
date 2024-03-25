@@ -53,10 +53,10 @@ function ProxyFullscreen() {
         iframeUrl = './woah.html';
     } else if (proxyItem === 'doge') {
       iframeurl = './eh.html'
-    } else if (proxyItem === 'hyper') {
-      iframeUrl='https://to.mathonline.click'
+    } else if (proxyItem === 'art') {
+      iframeUrl='./art.html'
     } else {
-        iframeUrl = './woah.html';
+        iframeUrl = './art.html';
     }
     document.getElementById('contentFrame').style.display = 'block';
     contentFrame.srcdoc = `
