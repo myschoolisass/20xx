@@ -16,6 +16,7 @@
     height: 100%;
     border: none;
     z-index: 9999;
+    display: none; /* Initially hide the iframe */
   }
 </style>
 </head>
@@ -50,12 +51,13 @@ document.addEventListener("fullscreenchange", function () {
   if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement) {
     var iframe = document.createElement("iframe");
     iframe.id = "fullscreen-frame";
-    iframe.src = "./a.html";
+    iframe.src = "./a.html"; // Set the src of the iframe
     document.body.appendChild(iframe);
+    iframe.style.display = "block"; // Show the iframe
   } else {
     var iframe = document.getElementById("fullscreen-frame");
     if (iframe) {
-      iframe.parentNode.removeChild(iframe);
+      iframe.style.display = "none"; // Hide the iframe
     }
   }
 });
