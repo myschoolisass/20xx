@@ -52,17 +52,6 @@ select:focus {
 
 <div class="container">
   <h1>Settings</h1>
-  <label for="background">Funni Cursor Effects</label>
-  <select id="background" onchange="saveSettings()">
-    <option value="true">Yes</option>
-    <option value="false">Hell no</option>
-  </select>
-  <br>
-  <label for="explosions">Particle Die Fast</label>
-  <select id="explosions" onchange="saveSettings()">
-    <option value="false">No</option>
-  <option value="true">Yes</option>
-</select>
 <!--  <br>
   <label for="gamestyle">Game Select Style</label>
   <select id="gamestyle" onchange="saveSettings()">
@@ -78,74 +67,18 @@ select:focus {
     <option value="art">Art Class (by far the fastest)</option>
 </select>
 <br>
-<label for="quoteType">Quotes</label>
-<select id="quoteType" onchange="saveSettings()">
-  <option value="day">Daily</option>
-  <option value="hour">Hourly</option>
-  <option value="minute">Minutely</option>
-  </select>
-  <br>
-<label for="panic">Panic Button</label>
-<select id="panic" onchange="saveSettings()">
-  <option value="on">Yea</option>
-  <option value="off">Nah</option>
-</select>
-<label for="panicURL">Panic URL</label>
-<input type="text" id="panicURL" onchange="saveSettings()">
-</div>
-
 <script>
   // Function to save settings to localStorage
   function saveSettings() {
-    const background = document.getElementById("background").value;
     const proxy = document.getElementById("proxy").value
-    const panic = document.getElementById("panic").value;
-    const panicURL = document.getElementById("panicURL").value;
-    const explosions = document.getElementById("explosions").value;
-    const quoteType = document.getElementById("quoteType").value;
- //  const gameStyle = document.getElementById("gamestyle").value;
-    
- //   localStorage.setItem("gamestyle", gameStyle)
-    localStorage.setItem("quoteType", quoteType)
-    localStorage.setItem("explosions", explosions)
-    localStorage.setItem("panicURL", panicURL);
-    localStorage.setItem("panic", panic);
     localStorage.setItem("proxy", proxy);
-    localStorage.setItem("draw", background);
   }
 
   window.onload = function() {
- //   const gameStyle = document.getElementById("gamestyle").value;
-    const quoteType = localStorage.getItem("quoteType");
-    const Explosions = localStorage.getItem("explosions");
-    const savedType = localStorage.getItem("userType");
-    const savedBackground = localStorage.getItem("draw");
     const savedProxy = localStorage.getItem("proxy");
-    const Panic = localStorage.getItem("panic")
-    const PanicURL = localStorage.getItem("panicURL")
-
-    if (quoteType) {
-      document.getElementById("quoteType").value = quoteType;
-    }
-    if (savedBackground) {
-      document.getElementById("background").value = savedBackground;
-    }
     if (savedProxy) {
       document.getElementById("proxy").value = savedProxy;
-    }
-    if (Panic) {
-      document.getElementById("panic").value = Panic;
-    }
-    if (PanicURL) {
-      document.getElementById("panicURL").value = PanicURL;
-    }
-    if (Explosions) {
-      document.getElementById("explosions").value = Explosions;
-    }
- //   if (gameStyle) {
-   //   document.getElementById("gamestyle").value = gameStyle
-    //}
-  };
+    }}
 </script>
 
 </body>
