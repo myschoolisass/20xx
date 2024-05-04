@@ -330,6 +330,9 @@
         var buttonElem = document.createElement("button");
         buttonElem.textContent = button.name;
         buttonElem.setAttribute("data-url", button.url);
+        buttonElem.addEventListener("click", function() {
+          window.location.href = button.url; // Redirect to the URL when button is clicked
+        });
 
         var pinButton = document.createElement("button");
         pinButton.textContent = "📌";
