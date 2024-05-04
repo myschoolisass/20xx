@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Buttons</title>
+</head>
+<body>
+
+<div id="button-container"></div>
+
+<script>
+  // Your JSON data
+  var jsonData = {
+  "categories": [
+    {
+      "name": "Popular",
+      "buttons": [
+        {
+          "name": "Tag",
+          "url": "https://abinbins.github.io/a3/tag",
+          "image": "tag_image.jpg"
+        },
+        {
+          "name": "Drive Mad",
+          "url": "https://abinbins.github.io/a77/drive-mad",
+          "image": "drive_mad_image.jpg"
+        },
+        {
+          "name": "Bitlife",
+          "url": "https://abinbins.github.io/a/bitlife",
+          "image": "bitlife_image.jpg"
+        },
+        {
+          "name": "Retro Bowl",
+          "url": "https://myschoolisass.github.io/rb",
+          "image": "retro_bowl_image.jpg"
+        },
+        {
+          "name": "Progress Knight",
+          "url": "https://myschoolisass.github.io/pk",
+          "image": "progress_knight_image.jpg"
+        },
+        {
+          "name": "SnowBattle",
+          "url": "https://myschoolisass.github.io/sb",
+          "image": "snowbattle_image.jpg"
+        },
+        {
+          "name": "Subway Surfers",
+          "url": "https://myschoolisass.github.io/ss",
+          "image": "subway_surfers_image.jpg"
+        },
+        {
+          "name": "Minecraft v1.5.2",
+          "url": "https://myschoolisass.github.io/EC.html",
+          "image": "minecraft_image.jpg"
+        },
+        {
+          "name": "Basketball Legends",
+          "url": "https://myschoolisass.github.io/bl",
+          "image": "basketball_legends_image.jpg"
+        },
+        {
+          "name": "Cluster Rush",
+          "url": "https://myschoolisass.github.io/cr",
+          "image": "cluster_rush_image.jpg"
+        },
+        {
+          "name": "Slope",
+          "url": "https://myschoolisass.github.io/slp",
+          "image": "slope_image.jpg"
+        },
+        {
+          "name": "Slope 2",
+          "url": "https://myschoolisass.github.io/slp2",
+          "image": "slope_2_image.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Rogue-Like",
+      "buttons": [
+        {
+          "name": "Ngon New",
+          "url": "https://myschoolisass.github.io/ngn",
+          "image": "ngon_new_image.jpg"
+        },
+        {
+          "name": "Ngon OG",
+          "url": "https://myschoolisass.github.io/ngo",
+          "image": "ngon_og_image.jpg"
+        },
+        {
+          "name": "Ten Minutes Till Dawn",
+          "url": "https://myschoolisass.github.io/tm/",
+          "image": "ten_minutes_till_dawn_image.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Idle",
+      "buttons": [
+        {
+          "name": "Idle Breakout",
+          "url": "https://myschoolisass.github.io/ib",
+          "image": "idle_breakout_image.jpg"
+        },
+        {
+          "name": "Cookie Clicker",
+          "url": "https://n-eight-lime.vercel.app/a/hvtrs8%2F-optgin.faqhlev.mre",
+          "image": "cookie_clicker_image.jpg"
+        },
+        {
+          "name": "Idle Idle Gamedev",
+          "url": "https://myschoolisass.github.io/iigd",
+          "image": "idle_idle_gamedev_image.jpg"
+        },
+        {
+          "name": "Idle Dice",
+          "url": "https://myschoolisass.github.io/id",
+          "image": "idle_dice_image.jpg"
+        },
+        {
+          "name": "Idle Chopper",
+          "url": "https://myschoolisass.github.io/ic",
+          "image": "idle_chopper_image.jpg"
+        },
+        {
+          "name": "Idle Superpowers",
+          "url": "https://n-eight-lime.vercel.app/a/hvtr%3A-%2Fnuvseaoeq.aoo%2Feaoeq%2Fkdne%2Fswpgrroueps-",
+          "image": "idle_superpowers_image.jpg"
+        },
+        {
+          "name": "Space Company",
+          "url": "https://myschoolisass.github.io/sc",
+          "image": "space_company_image.jpg"
+        },
+        {
+          "name": "Particle Clicker",
+          "url": "https://myschoolisass.github.io/pc",
+          "image": "particle_clicker_image.jpg"
+        },
+        {
+          "name": "Idle Shark",
+          "url": "https://myschoolisass.github.io/is",
+          "image": "idle_shark_image.jpg"
+        },
+        {
+          "name": "The Final Earth 2",
+          "url": "https://myschoolisass.github.io/tfe2",
+          "image": "the_final_earth_2_image.jpg"
+        },
+        {
+          "name": "Clicker Heroes",
+          "url": "https://n-eight-lime.vercel.app/a/hvtrs8%2F-wuw%2Ccniakgrjepogs%2Ccmm-pna%7B.jtol",
+          "image": "clicker_heroes_image.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Shooter",
+      "buttons": [
+        {
+          "name": "1v1.lol",
+          "url": "https://myschoolisass.github.io/1v1",
+          "image": "1v1_lol_image.jpg"
+        },
+        {
+          "name": "Funny Shooter",
+          "url": "https://myschoolisass.github.io/fs",
+          "image": "funny_shooter_image.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Scratch",
+      "buttons": [
+        {
+          "name": "Two Player Battle",
+          "url": "https://turbowarp.org/292728003/embed",
+          "image": "two_player_battle_image.jpg"
+        },
+        {
+          "name": "Getting Over It",
+          "url": "https://turbowarp.org/389464290/embed",
+          "image": "getting_over_it_image.jpg"
+        },
+        {
+          "name": "Geometry Dash (levels 1-3)",
+          "url": "https://turbowarp.org/105500895/embed",
+          "image": "geometry_dash_image.jpg"
+        },
+        {
+          "name": "Geometry Dash Subzero",
+          "url": "https://turbowarp.org/216343253/embed",
+          "image": "geometry_dash_subzero_image.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Horror",
+      "buttons": [
+        {
+          "name": "Fnaf 2",
+          "url": "https://myschoolisass.github.io/fnaf2",
+          "image": "fnaf_2_image.jpg"
+        },
+        {
+          "name": "Fnaf",
+          "url": "https://myschoolisass.github.io/fnaf",
+          "image": "fnaf_image.jpg"
+        },
+        {
+          "name": "Fnaf 3",
+          "url": "https://myschoolisass.github.io/fnaf3.html",
+          "image": "fnaf_3_image.jpg"
+        }
+      ]
+    },
+    {
+      "name": "No-Category",
+      "buttons": [
+        {
+          "name": "Tanuki Sunset",
+          "url": "https://myschoolisass.github.io/ts",
+          "image": "tanuki_sunset_image.jpg"
+        },
+        {
+          "name": "Boblox",
+          "url": "https://test.mathonline.click/apps/roblox-corporation/5349/roblox.html",
+          "image": "boblox_image.jpg"
+        },
+        {
+          "name": "Sandtris",
+          "url": "https://myschoolisass.github.io/st/",
+          "image": "sandtris_image.jpg"
+        },
+        {
+          "name": "Eggy Car",
+          "url": "https://myschoolisass.github.io/eg/",
+          "image": "eggy_car_image.jpg"
+        },
+        {
+          "name": "Awesome Tanks",
+          "url": "https://myschoolisass.github.io/aw.html",
+          "image": "awesome_tanks_image.jpg"
+        },
+        {
+          "name": "Vex 7",
+          "url": "https://myschoolisass.github.io/vx",
+          "image": "vex_7_image.jpg"
+        },
+        {
+          "name": "Polybranch",
+          "url": "https://myschoolisass.github.io/pb",
+          "image": "polybranch_image.jpg"
+        },
+        {
+          "name": "Stickman Hook",
+          "url": "https://myschoolisass.github.io/smh",
+          "image": "stickman_hook_image.jpg"
+        },
+        {
+          "name": "Tetris",
+          "url": "https://myschoolisass.github.io/te",
+          "image": "tetris_image.jpg"
+        },
+        {
+          "name": "Raft Wars",
+          "url": "https://abinbins.github.io/a/raft-wars",
+          "image": "raft_wars_image.jpg"
+        },
+        {
+          "name": "Stacktris",
+          "url": "https://abinbins.github.io/a6/stacktris",
+          "image": "stacktris_image.jpg"
+        },
+        {
+          "name": "Duck Life",
+          "url": "https://abinbins.github.io/a/duck-life",
+          "image": "duck_life_image.jpg"
+        },
+        {
+          "name": "Hextris",
+          "url": "https://abinbins.github.io/a7/hextris/",
+          "image": "hextris_image.jpg"
+        },
+        {
+          "name": "Dance of Fire and Ice",
+          "url": "https://abinbins.github.io/a8/a-dance-of-fire-and-ice",
+          "image": "dance_of_fire_and_ice_image.jpg"
+        },
+        {
+          "name": "Chrome Dino",
+          "url": "https://abinbins.github.io/a7/chrome-dino",
+          "image": "chrome_dino_image.jpg"
+        },
+        {
+          "name": "Crossy Road",
+          "url": "https://abinbins.github.io/a/crossy-road/",
+          "image": "crossy_road_image.jpg"
+        },
+        {
+          "name": "Stack",
+          "url": "https://abinbins.github.io/a2/stack",
+          "image": "stack_image.jpg"
+        }
+      ]
+    }
+  ]
+}
+
+  // Function to generate buttons from JSON data
+  function generateButtons(data) {
+    var container = document.getElementById("button-container");
+
+    data.categories.forEach(function(category) {
+      var categoryDiv = document.createElement("div");
+      categoryDiv.className = "category";
+      
+      var heading = document.createElement("h1");
+      heading.textContent = category.name;
+      categoryDiv.appendChild(heading);
+
+      var contentDiv = document.createElement("div");
+      contentDiv.className = "category-content";
+
+      category.buttons.forEach(function(button) {
+        var buttonElem = document.createElement("button");
+        buttonElem.textContent = button.name;
+        buttonElem.setAttribute("data-url", button.url);
+
+        var pinButton = document.createElement("button");
+        pinButton.textContent = "📌";
+        pinButton.className = "pin-button";
+        pinButton.onclick = function() {
+          // Code to pin the button
+        };
+
+        var buttonImage = document.createElement("img");
+        buttonImage.src = button.image;
+        buttonImage.alt = button.name + " Image";
+
+        var buttonContainer = document.createElement("div");
+        buttonContainer.className = "button-container";
+        buttonContainer.appendChild(buttonImage);
+        buttonContainer.appendChild(buttonElem);
+        buttonContainer.appendChild(pinButton);
+
+        contentDiv.appendChild(buttonContainer);
+      });
+
+      categoryDiv.appendChild(contentDiv);
+      container.appendChild(categoryDiv);
+    });
+  }
+
+  // Call the function with your JSON data
+  generateButtons(jsonData);
+</script>
+
+</body>
+</html>
