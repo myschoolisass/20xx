@@ -67,6 +67,18 @@ select:focus {
     <option value="art">Art Class (by far the fastest)</option>
 </select>
 <br>
+  <label for="use">AB cloak</label>
+  <select id="use" onchange="saveSettings()">
+    <option value="none">No AB cloak</option>
+    <option value="ab">Yes AB cloak</option>
+  </select>
+  <br>
+  <label for="cover">Tab Cloak</label>
+  <select id="cover" onchange="saveSettings()">
+    <options value="google">Google</options>
+    <options value="nasa">Nasa</options>
+    <options value="the_fucking_usa_government">United States of America</options>
+  </select>
 <script>
   // Function to save settings to localStorage
   function saveSettings() {
