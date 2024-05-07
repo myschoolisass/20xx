@@ -21,52 +21,14 @@
 </style>
 </head>
 <body>
-<a class="button" onclick="toggleFullScreen()"><span id="logo" aria-label="Google"></span></a>
+<a class="button" onclick="fullscreen()"><span id="logo" aria-label="Google"></span></a>
 <p><b>404.</b> <ins>That’s an error.</ins></p>
 <p>The requested URL was not found on this server.</p>
 <ins>That's all we know.</ins>
 <script>
-var iframe; // Declare iframe variable globally
-
-function toggleFullScreen() {
-                 if (window.parent !== window) {
-                    window.parent.postMessage("activate fullscreen", "*");
-                } else {
-  var fullscreenElement = document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement;
-  if (!fullscreenElement) {
-    if (document.documentElement.requestFullscreen) {  
-      document.documentElement.requestFullscreen();  
-    } else if (document.documentElement.mozRequestFullScreen) {  
-      document.documentElement.mozRequestFullScreen();  
-    } else if (document.documentElement.webkitRequestFullscreen) {  
-      document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);  
-    }  
-  } else {
-    if (document.exitFullscreen) {
-      document.exitFullscreen();
-    } else if (document.mozCancelFullScreen) {
-      document.mozCancelFullScreen();
-    } else if (document.webkitExitFullscreen) {
-      document.webkitExitFullscreen();
-    }
-  }
-} }
-
-document.addEventListener("fullscreenchange", function () {
-  if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement) {
-    if (!iframe) {
-      iframe = document.createElement("iframe");
-      iframe.id = "fullscreen-frame";
-      iframe.src = "./a.html"; // Set the src of the iframe
-      document.body.appendChild(iframe);
-    }
-    iframe.style.display = "block"; // Show the iframe
-  } else {
-    if (iframe) {
-      iframe.style.display = "none"; // Hide the iframe
-    }
-  }
-});
+function fullscreen() {
+                     window.parent.postMessage("activate fullscreen", "*");
+}
 </script>
 </body>
 </html>
