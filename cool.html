@@ -20,33 +20,29 @@
 </head>
 <body>
 
-<iframe src="./nasa.html" id="fullscreenIframe"></iframe>
+<iframe id="fullscreenIframe"></iframe>
 
 <script>
-    // Listen for the "message" event
-    window.addEventListener("message", function(event) {
-        // Check if the message is "activate fullscreen"
-        if (event.data === "activate fullscreen") {
-            // Check if fullscreen mode is supported
-            if (document.fullscreenEnabled || document.webkitFullscreenEnabled || document.mozFullScreenEnabled || document.msFullscreenEnabled) {
-                // Request fullscreen mode
-                if (document.documentElement.requestFullscreen) {
-                    document.documentElement.requestFullscreen();
-                } else if (document.documentElement.webkitRequestFullscreen) {
-                    document.documentElement.webkitRequestFullscreen();
-                } else if (document.documentElement.mozRequestFullScreen) {
-                    document.documentElement.mozRequestFullScreen();
-                } else if (document.documentElement.msRequestFullscreen) {
-                    document.documentElement.msRequestFullscreen();
-                }
-            } else {
-                console.error("Fullscreen mode is not supported.");
-            }
+    // Function to update iframe src based on localStorage
+    function updateIframeSrc() {
+        var iframe = document.getElementById("fullscreenIframe");
+        var cover = localStorage.getItem("cover");
+
+        if (cover === "google") {
+            iframe.src = "./google.html";
+        } else if (cover === "nasa") {
+            iframe.src = "./nasa.html";
+        } else if (cover === "the_fucking_usa_government") {
+            iframe.src = "./usa.html";
+        } else {
+            console.error("Invalid cover value in localStorage.");
         }
-    }, false);
+    }
 
     // Execute JavaScript code in the iframe
     window.onload = function() {
+        updateIframeSrc();
+
         var iframe = document.getElementById("fullscreenIframe");
         var script = document.createElement('script');
         script.text = `(function() {
