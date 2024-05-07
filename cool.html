@@ -27,7 +27,7 @@
     function updateIframeSrc() {
         var iframe = document.getElementById("fullscreenIframe");
         var cover = localStorage.getItem("cover");
-
+        if (cover) {
         if (cover === "google") {
             iframe.src = "./google.html";
         } else if (cover === "nasa") {
@@ -36,6 +36,9 @@
             iframe.src = "./usa.html";
         } else {
             console.error("Invalid cover value in localStorage.");
+        }
+        } else {
+            iframe.src = "./google.html";
         }
     }
 
