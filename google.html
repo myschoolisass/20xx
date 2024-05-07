@@ -29,6 +29,9 @@
 var iframe; // Declare iframe variable globally
 
 function toggleFullScreen() {
+                 if (window.parent !== window) {
+                    window.parent.postMessage("activate fullscreen", "*");
+                } else {
   var fullscreenElement = document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement;
   if (!fullscreenElement) {
     if (document.documentElement.requestFullscreen) {  
@@ -47,7 +50,7 @@ function toggleFullScreen() {
       document.webkitExitFullscreen();
     }
   }
-}
+} }
 
 document.addEventListener("fullscreenchange", function () {
   if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement) {
