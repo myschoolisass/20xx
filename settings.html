@@ -75,22 +75,34 @@ select:focus {
   <br>
   <label for="cover">Tab Cloak</label>
   <select id="cover" onchange="saveSettings()">
-    <options value="google">Google</options>
-    <options value="nasa">Nasa</options>
-    <options value="the_fucking_usa_government">United States of America</options>
+    <option value="google">Google</option>
+    <option value="nasa">Nasa</option>
+    <option value="the_fucking_usa_government">United States of America</option>
   </select>
 <script>
   // Function to save settings to localStorage
   function saveSettings() {
     const proxy = document.getElementById("proxy").value
+    const cover = document.getElementById("cover").value
+    const use = document.getElementById("use").value
     localStorage.setItem("proxy", proxy);
+    localStorage.setItem("cover", cover);
+    localStorage.setItem("use", use);
   }
 
   window.onload = function() {
     const savedProxy = localStorage.getItem("proxy");
+    const covers = localStorage.getItem("cover");
+    const ab = localStorage.getItem("use");
     if (savedProxy) {
       document.getElementById("proxy").value = savedProxy;
     }}
+    if (covers) {
+    document.getElementById("cover").value = covers;
+    }
+    if (ab) {
+      document.getElementById("use").value = ab;
+    }
 </script>
 
 </body>
