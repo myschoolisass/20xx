@@ -70,42 +70,7 @@
         var iframe = document.getElementById("fullscreenIframe");
         var script = document.createElement('script');
         script.text = `(function() {
-            // Create alert message
-            var alertMessage = document.createElement("div");
-            alertMessage.style.cssText = "position: fixed; top: 0; left: 0; width: 100%; background-color: #f44336; color: white; text-align: center; padding: 10px; z-index: 9999;";
-            alertMessage.textContent = "Scroll down to use back to top button proxy";
-            document.body.appendChild(alertMessage);
-
-            // Create back to top button
-            var btn = document.createElement("button");
-            btn.setAttribute("id", "backToTopBtn");
-            btn.setAttribute("title", "Back to Top");
-            btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width: 30px; height: 30px; fill: #ffffff;"><path d="M12 0l-8.484 8.484h5.484v13.516h5.996v-13.516h5.484l-8.484-8.484zm-8.484 20.016v3.984h5.484v-3.984h-5.484zm13.984 0v3.984h5.484v-3.984h-5.484z"/></svg>';
-            btn.style.cssText = "display: none; position: fixed; bottom: 20px; right: 20px; background-color: #005288; color: #ffffff; border: none; border-radius: 50%; width: 50px; height: 50px; cursor: pointer; transition: opacity 0.3s ease-in-out; outline: none;";
-            document.body.appendChild(btn);
-
-            window.onscroll = function() {scrollFunction()};
-
-            function scrollFunction() {
-                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                    document.getElementById("backToTopBtn").style.display = "block";
-                    alertMessage.style.display = "none"; // Hide alert message when scrolled down
-                } else {
-                    document.getElementById("backToTopBtn").style.display = "none";
-                    alertMessage.style.display = "block"; // Show alert message when at the top
-                }
-            }
-
-            document.getElementById("backToTopBtn").addEventListener("click", function() {
-                document.body.scrollTop = 0;
-                document.documentElement.scrollTop = 0;
-                
-                // Post message to parent window if exists
-                if (window.parent !== window) {
-                    window.parent.postMessage("activate fullscreen", "*");
-                }
-            });
-        })();`;
+`;
         iframe.contentWindow.document.body.appendChild(script);
     };
 </script>
